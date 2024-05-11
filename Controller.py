@@ -13,6 +13,15 @@ class controller:
     def __init__(self):
         pass
 
+    # returns the moves the player is able to make
+    def getValidMoves(self, player):
+        moves = []
+        for i in range(1, 9):
+            for j in range(1, 9):
+                if self.validateMove(i, j, player):
+                    moves.append((i, j))
+        return moves
+
     # returns false if the move is invalid and if valid updates the board and the scores and returns true
     def make_move(self, x, y, player):
         if not self.validateMove(x, y, player):
@@ -24,7 +33,8 @@ class controller:
             cell = 'b'
 
         self.update_board(x, y, player)
-
+        dx = [0, 0, 1, -1, 1, -1, 1, -1]
+        dy = [1, -1, 0, 0, 1, -1, -1, 1]
         for i in range(1, 9):
             if x + i <= 8:
                 if self.board[x + i - 1][y - 1] == cell or self.board[x + i - 1][y - 1] == '.':
@@ -54,17 +64,16 @@ class controller:
 
     # returns false if the move is invalid and true if it's valid
     def validateMove(self, x, y, player):
-        dx = [0, 0, 1, -1]
-        dy = [1, -1, 0, 0]
+        dx = [0, 0, 1, -1, 1, -1, 1, -1]
+        dy = [1, -1, 0, 0, 1, -1, -1, 1]
         if x <= 0 or y <= 0 or x > 8 or y > 8 or self.board[x - 1][y - 1] != '.':
-            print("Invalid Move")
             return False
         if player == 0:
             cell = 'w'
         else:
             cell = 'b'
         validMove = False
-        for i in range(4):
+        for i in range(8):
             newx = x + dx[i]
             newy = y + dy[i]
             if newx <= 0 or newy <= 0 or newx > 8 or newy > 8:
