@@ -1,4 +1,5 @@
 class controller:
+    # the indices used are one-based
     board = [['.', '.', '.', '.', '.', '.', '.', '.'],
              ['.', '.', '.', '.', '.', '.', '.', '.'],
              ['.', '.', '.', '.', '.', '.', '.', '.'],
@@ -12,6 +13,7 @@ class controller:
     def __init__(self):
         pass
 
+    # returns false if the move is invalid and if valid updates the board and the scores and returns true
     def make_move(self, x, y, player):
         if not self.validateMove(x, y, player):
             return False
@@ -50,6 +52,7 @@ class controller:
                     self.update_board(x, y - i, player)
         return True
 
+    # returns false if the move is invalid and true if it's valid
     def validateMove(self, x, y, player):
         dx = [0, 0, 1, -1]
         dy = [1, -1, 0, 0]
@@ -70,6 +73,7 @@ class controller:
                 validMove = True
         return validMove
 
+    # updates a cell of the board and changes the score of the players
     def update_board(self, x, y, player):
         if player == 0:
             cell = 'w'
@@ -81,6 +85,7 @@ class controller:
                 self.PlayerScores[(player + 1) % 2] -= 1
         self.board[x - 1][y - 1] = cell
 
+    # prints the board
     def display_board(self):
         for i in range(9):
             print(i, end=" ")
