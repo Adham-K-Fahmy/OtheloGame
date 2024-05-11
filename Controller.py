@@ -43,9 +43,9 @@ class controller:
             for j in range(9):
                 newx = x + dx[i] * j
                 newy = y + dy[i] * j
-                if newx <= 0 or newy <= 0 or newx > 8 or newy > 8 or self.board[newx-1][newy-1] == '.':
+                if newx <= 0 or newy <= 0 or newx > 8 or newy > 8 or self.board[newx - 1][newy - 1] == '.':
                     break
-                if self.board[newx-1][newy-1] == cell:
+                if self.board[newx - 1][newy - 1] == cell:
                     resx = newx
                     resy = newy
             if resx != -1:
@@ -62,19 +62,33 @@ class controller:
     def validateMove(self, x, y, player):
         dx = [0, 0, 1, -1, 1, -1, 1, -1]
         dy = [1, -1, 0, 0, 1, -1, -1, 1]
+        check = [False, False, False, False, False, False, False, False]
         if x <= 0 or y <= 0 or x > 8 or y > 8 or self.board[x - 1][y - 1] != '.':
             return False
         if player == 0:
             cell = 'w'
         else:
             cell = 'b'
-        validMove = False
         for i in range(8):
             newx = x + dx[i]
             newy = y + dy[i]
             if newx <= 0 or newy <= 0 or newx > 8 or newy > 8:
                 continue
             if self.board[newx - 1][newy - 1] != '.' and self.board[newx - 1][newy - 1] != cell:
+                check[i] = True
+        validMove = False
+        for i in range(8):
+            if not check[i]:
+                continue
+            found = False
+            for j in range(1, 9):
+                newx = x + dx[i] * j
+                newy = y + dy[i] * j
+                if newx <= 0 or newy <= 0 or newx > 8 or newy > 8 or self.board[newx - 1][newy - 1] == '.':
+                    break
+                if self.board[newx - 1][newy - 1] == cell:
+                    found = True
+            if found:
                 validMove = True
         return validMove
 
@@ -101,8 +115,6 @@ class controller:
                 print(element, end=" ")
             print()
         print()
-
-
 
     def player_vs_player(self):
         while True:
