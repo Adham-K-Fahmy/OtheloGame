@@ -37,31 +37,25 @@ class controller:
         self.update_board(x, y, player)
         dx = [0, 0, 1, -1, 1, -1, 1, -1]
         dy = [1, -1, 0, 0, 1, -1, -1, 1]
-        for i in range(1, 9):
-            if x + i <= 8:
-                if self.board[x + i - 1][y - 1] == cell or self.board[x + i - 1][y - 1] == '.':
+        for i in range(8):
+            resx = -1
+            resy = -1
+            for j in range(9):
+                newx = x + dx[i] * j
+                newy = y + dy[i] * j
+                if newx <= 0 or newy <= 0 or newx > 8 or newy > 8 or self.board[newx-1][newy-1] == '.':
                     break
-                else:
-                    self.update_board(x + i, y, player)
-        for i in range(1, 9):
-            if y + i <= 8:
-                if self.board[x - 1][y + i - 1] == cell or self.board[x - 1][y + i - 1] == '.':
-                    break
-                else:
-                    self.update_board(x, y + i, player)
+                if self.board[newx-1][newy-1] == cell:
+                    resx = newx
+                    resy = newy
+            if resx != -1:
+                for j in range(9):
+                    newx = x + dx[i] * j
+                    newy = y + dy[i] * j
+                    if newx == resx and newy == resy:
+                        break
+                    self.update_board(newx, newy, player)
 
-        for i in range(1, 9):
-            if x - i > 0:
-                if self.board[x - i - 1][y - 1] == cell or self.board[x - i - 1][y - 1] == '.':
-                    break
-                else:
-                    self.update_board(x - i, y, player)
-        for i in range(1, 9):
-            if y - i > 0:
-                if self.board[x - 1][y - i - 1] == cell or self.board[x - 1][y - i - 1] == '.':
-                    break
-                else:
-                    self.update_board(x, y - i, player)
         return True
 
     # returns false if the move is invalid and true if it's valid
