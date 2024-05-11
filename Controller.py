@@ -1,4 +1,6 @@
 class controller:
+    # player 0 is white
+    # player 1 is black
     # the indices used are one-based
     board = [['.', '.', '.', '.', '.', '.', '.', '.'],
              ['.', '.', '.', '.', '.', '.', '.', '.'],
