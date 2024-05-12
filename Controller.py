@@ -35,9 +35,9 @@ class controller:
             cell = 'b'
 
         self.update_board(x, y, player)
-        dx = [0, 0, 1, -1, 1, -1, 1, -1]
-        dy = [1, -1, 0, 0, 1, -1, -1, 1]
-        for i in range(8):
+        dx = [0, 0, 1, -1]
+        dy = [1, -1, 0, 0]
+        for i in range(4):
             resx = -1
             resy = -1
             for j in range(9):
@@ -60,16 +60,16 @@ class controller:
 
     # returns false if the move is invalid and true if it's valid
     def validateMove(self, x, y, player):
-        dx = [0, 0, 1, -1, 1, -1, 1, -1]
-        dy = [1, -1, 0, 0, 1, -1, -1, 1]
-        check = [False, False, False, False, False, False, False, False]
+        dx = [0, 0, 1, -1]
+        dy = [1, -1, 0, 0]
+        check = [False, False, False, False]
         if x <= 0 or y <= 0 or x > 8 or y > 8 or self.board[x - 1][y - 1] != '.':
             return False
         if player == 0:
             cell = 'w'
         else:
             cell = 'b'
-        for i in range(8):
+        for i in range(4):
             newx = x + dx[i]
             newy = y + dy[i]
             if newx <= 0 or newy <= 0 or newx > 8 or newy > 8:
@@ -77,7 +77,7 @@ class controller:
             if self.board[newx - 1][newy - 1] != '.' and self.board[newx - 1][newy - 1] != cell:
                 check[i] = True
         validMove = False
-        for i in range(8):
+        for i in range(4):
             if not check[i]:
                 continue
             found = False
