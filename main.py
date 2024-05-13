@@ -1,8 +1,16 @@
 from Controller import *
 
+
 if __name__ == '__main__':
-    Controller = controller()
-    Controller.player_vs_player()
+    Controller = Controller()
+    # Controller.player_vs_player()
+    Controller.player_vs_computer()
+
+    # To play against the computer, call the computer_vs_player method
+    # computer = Computer()
+    # best_move = computer.minimax(currentPosition, 3, float('-inf'), float('inf'), True)
+    # Create an instance of the Controller class
+
 
     # last = 1
     # while True:
