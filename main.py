@@ -3,9 +3,16 @@ from Controller import *
 
 if __name__ == '__main__':
     Controller = Controller()
-    # Controller.player_vs_player()
-    Controller.player_vs_computer()
-
+    choice = ""
+    while choice != "1" and choice != "2":
+        print("1 for player vs player \n2 for player vs computer")
+        choice = input()
+    if choice == "1":
+        Controller.player_vs_player()
+    elif choice == "2":
+        Controller.player_vs_computer()
+    else:
+        print("Invalid choice")
     # To play against the computer, call the computer_vs_player method
     # computer = Computer()
     # best_move = computer.minimax(currentPosition, 3, float('-inf'), float('inf'), True)
