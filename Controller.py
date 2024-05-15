@@ -4,7 +4,6 @@ class Controller:
     # player 1 is black
     # the indices used are one-based
 
-
     def __init__(self, depth=None):
         self.depth = depth
         self.board = [['.', '.', '.', '.', '.', '.', '.', '.'],
@@ -45,7 +44,7 @@ class Controller:
         for i in range(4):
             resx = -1
             resy = -1
-            for j in range(9):
+            for j in range(1, 9):
                 newx = x + dx[i] * j
                 newy = y + dy[i] * j
                 if newx <= 0 or newy <= 0 or newx > 8 or newy > 8 or self.board[newx - 1][newy - 1] == '.':
@@ -53,6 +52,7 @@ class Controller:
                 if self.board[newx - 1][newy - 1] == cell:
                     resx = newx
                     resy = newy
+                    break
             if resx != -1:
                 for j in range(9):
                     newx = x + dx[i] * j
