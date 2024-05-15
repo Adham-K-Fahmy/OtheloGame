@@ -18,7 +18,7 @@ class GUI:
                 font.render('Player 1 (black) turn', True, 'black')]
         controller = Controller()
         while True:
-            self.screen.fill('green')
+            self.screen.fill((46, 139, 87))
             for i in range(8):
                 pygame.draw.line(self.screen, 'black', (0, 100 + i * 75), (600, 100 + i * 75))
             for i in range(1, 8):
@@ -32,14 +32,14 @@ class GUI:
             for i in range(8):
                 for j in range(8):
                     if (i + 1, j + 1) in valid_moves:
-                        pygame.draw.rect(self.screen, 'red', pygame.Rect(j * 75 + 1, i * 75 + 101, 74, 74))
+                        pygame.draw.rect(self.screen, '#9DDE8B', pygame.Rect(j * 75 + 1, i * 75 + 101, 74, 74))
                     elif controller.board[i][j] == 'w':
                         pygame.draw.circle(self.screen, 'white', ((j) * 75 + 37, (i) * 75 + 137), 30)
                     elif controller.board[i][j] == 'b':
                         pygame.draw.circle(self.screen, 'black', ((j) * 75 + 37, (i) * 75 + 137), 30)
             if not valid_moves:
                 if not controller.getValidMoves((turn + 1) % 2):
-                    self.screen.fill('green')
+                    self.screen.fill((46, 139, 87))
                     winner_font = pygame.font.SysFont("blackarial", 40)
                     if controller.PlayerScores[0] > controller.PlayerScores[1]:
                         winner_text = winner_font.render('Player 2 (white) Wins', True, 'black')
@@ -55,7 +55,7 @@ class GUI:
                         y = 220
                     mainmenu_text = winner_font.render('Main Menu', True, 'black')
                     self.screen.blit(winner_text, (x, y))
-                    pygame.draw.rect(self.screen, 'blue', pygame.Rect(220, 320, 170, 50))
+                    pygame.draw.rect(self.screen, '#CAF4FF', pygame.Rect(220, 320, 170, 50))
                     self.screen.blit(mainmenu_text, (230, 330))
                 else:
                     turn = (turn + 1) % 2
@@ -86,10 +86,10 @@ class GUI:
         medium_text = font.render("medium (depth = 3)", True, 'black')
         hard_text = font.render("hard (depth = 5)", True, 'black')
         while True:
-            self.screen.fill('lightgreen')
-            pygame.draw.rect(self.screen, 'blue', pygame.Rect(170, 150, 285, 50))
-            pygame.draw.rect(self.screen, 'blue', pygame.Rect(135, 250, 335, 50))
-            pygame.draw.rect(self.screen, 'blue', pygame.Rect(165, 350, 280, 50))
+            self.screen.fill('#FFF9D0')
+            pygame.draw.rect(self.screen, '#CAF4FF', pygame.Rect(170, 150, 285, 50))
+            pygame.draw.rect(self.screen, '#CAF4FF', pygame.Rect(135, 250, 335, 50))
+            pygame.draw.rect(self.screen, '#CAF4FF', pygame.Rect(165, 350, 280, 50))
             self.screen.blit(othelo_text, (260, 20))
             self.screen.blit(easy_text, (180, 150))
             self.screen.blit(medium_text, (145, 250))
@@ -123,7 +123,7 @@ class GUI:
                 font.render('Player (black) turn', True, 'black')]
         controller = Controller()
         while True:
-            self.screen.fill('green')
+            self.screen.fill((46, 139, 87))
             for i in range(8):
                 pygame.draw.line(self.screen, 'black', (0, 100 + i * 75), (600, 100 + i * 75))
             for i in range(1, 8):
@@ -137,14 +137,14 @@ class GUI:
             for i in range(8):
                 for j in range(8):
                     if (i + 1, j + 1) in valid_moves:
-                        pygame.draw.rect(self.screen, 'red', pygame.Rect(j * 75 + 1, i * 75 + 101, 74, 74))
+                        pygame.draw.rect(self.screen, '#9DDE8B', pygame.Rect(j * 75 + 1, i * 75 + 101, 74, 74))
                     elif controller.board[i][j] == 'w':
                         pygame.draw.circle(self.screen, 'white', ((j) * 75 + 37, (i) * 75 + 137), 30)
                     elif controller.board[i][j] == 'b':
                         pygame.draw.circle(self.screen, 'black', ((j) * 75 + 37, (i) * 75 + 137), 30)
             if not valid_moves:
                 if not controller.getValidMoves((turn + 1) % 2):
-                    self.screen.fill('green')
+                    self.screen.fill((144, 238, 144))
                     winner_font = pygame.font.SysFont("blackarial", 40)
                     if controller.PlayerScores[0] > controller.PlayerScores[1]:
                         winner_text = winner_font.render('Computer (white) Wins', True, 'black')
@@ -160,7 +160,7 @@ class GUI:
                         y = 220
                     mainmenu_text = winner_font.render('Main Menu', True, 'black')
                     self.screen.blit(winner_text, (x, y))
-                    pygame.draw.rect(self.screen, 'blue', pygame.Rect(220, 320, 170, 50))
+                    pygame.draw.rect(self.screen, '#CAF4FF', pygame.Rect(220, 320, 170, 50))
                     self.screen.blit(mainmenu_text, (230, 330))
                 else:
                     turn = (turn + 1) % 2
@@ -200,9 +200,9 @@ class GUI:
         playervsplayer_text = font.render("Player Vs Player", True, 'black')
         computervsplayer_text = font.render("Computer Vs Player", True, 'black')
         while True:
-            self.screen.fill('lightgreen')
-            pygame.draw.rect(self.screen, 'blue', pygame.Rect(170, 150, 285, 50))
-            pygame.draw.rect(self.screen, 'blue', pygame.Rect(135, 250, 345, 50))
+            self.screen.fill('#FFF9D0')
+            pygame.draw.rect(self.screen, '#CAF4FF', pygame.Rect(170, 150, 285, 50))
+            pygame.draw.rect(self.screen, '#CAF4FF', pygame.Rect(135, 250, 345, 50))
             self.screen.blit(othelo_text, (260, 20))
             self.screen.blit(playervsplayer_text, (180, 150))
             self.screen.blit(computervsplayer_text, (145, 250))
