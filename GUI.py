@@ -143,7 +143,6 @@ class GUI:
                     elif controller.board[i][j] == 'b':
                         pygame.draw.circle(self.screen, 'black', ((j) * 75 + 37, (i) * 75 + 137), 30)
             if not valid_moves:
-                print(controller.getValidMoves((turn + 1) % 2))
                 if not controller.getValidMoves((turn + 1) % 2):
                     self.screen.fill('green')
                     winner_font = pygame.font.SysFont("blackarial", 40)
