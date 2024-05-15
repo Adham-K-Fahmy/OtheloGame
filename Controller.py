@@ -156,14 +156,3 @@ class Controller:
                 if eval == minEval:
                     best_move = child
             return minEval, best_move
-
-    def get_depth(self):
-        while True:
-            try:
-                depth = int(input("Enter the desired depth (1 for simple, 3 for moderate, 5 for hard): "))
-                if depth in [1, 3, 5]:
-                    return depth
-                else:
-                    print("Invalid depth. Please enter 1, 3, or 5.")
-            except ValueError:
-                print("Invalid input! please enter an integer.")

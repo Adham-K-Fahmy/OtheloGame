@@ -166,7 +166,7 @@ class GUI:
                     turn = (turn + 1) % 2
                     continue
             pygame.display.update()
-            if turn == 0:
+            if turn == 0 and valid_moves:
                 _, best_move = controller.minimax(controller, depth, float('-inf'), float('inf'), True)
                 if best_move:
                     controller.board = best_move.board
