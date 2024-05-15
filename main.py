@@ -1,18 +1,19 @@
-from Controller import *
-
+from GUI import GUI
 
 if __name__ == '__main__':
-    Controller = Controller()
-    choice = ""
-    while choice != "1" and choice != "2":
-        print("1 for player vs player \n2 for player vs computer")
-        choice = input()
-    if choice == "1":
-        Controller.player_vs_player()
-    elif choice == "2":
-        Controller.player_vs_computer()
-    else:
-        print("Invalid choice")
+    gui = GUI()
+    gui.main_menu()
+    # Controller = Controller()
+    # choice = ""
+    # while choice != "1" and choice != "2":
+    #     print("1 for player vs player \n2 for player vs computer")
+    #     choice = input()
+    # if choice == "1":
+    #     Controller.player_vs_player()
+    # elif choice == "2":
+    #     Controller.player_vs_computer()
+    # else:
+    #     print("Invalid choice")
     # To play against the computer, call the computer_vs_player method
     # computer = Computer()
     # best_move = computer.minimax(currentPosition, 3, float('-inf'), float('inf'), True)
